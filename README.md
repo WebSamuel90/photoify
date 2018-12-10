@@ -2,10 +2,10 @@
 
 <img src="https://media.giphy.com/media/pJjKzRqY9HwME/giphy.gif">
 
-** Author
+## Author
 
 - Samuel Johansson
 
-** License
+## License
 
 - [MIT](LICENSE)
