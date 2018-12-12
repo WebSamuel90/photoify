@@ -3,11 +3,6 @@
 
 <head>
   <meta charset="utf-8">
+  <link rel="stylesheet" href="assets/styles/main.css">
   <title>Photoify</title>
 </head>
-
-<body>
-
-</body>
-
-</html>
