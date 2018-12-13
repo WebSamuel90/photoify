@@ -18,6 +18,10 @@
             <?php endif; ?>
         </li><!-- /nav-item -->
 
+        <li class="nav-item">
+            <a class="nav-link" href="create.php">Create account</a>
+        </li><!-- /nav-item -->
+
 
   </ul><!-- /navbar-nav -->
 </nav><!-- /navbar -->
