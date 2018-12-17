@@ -4,13 +4,8 @@ declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
 
-if (isset($_POST['username'], $_POST['name'], $_POST['email'], $_POST['password'], $_POST['password2'])) {
+if (isset($_POST['username'], $_POST['name'], $_POST['email'], $_POST['password'])) {
 
-  if ($_POST['password'] !== $_POST['password2']) {
-    $_SESSION['message'] = 'Please insert the same password in the fields';
-    redirect('/create.php');
-
-  } else {
     $username = filter_var(trim($_POST['username']), FILTER_SANITIZE_STRING);
     $name = filter_var(trim($_POST['name']), FILTER_SANITIZE_STRING);
     $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
@@ -33,7 +28,6 @@ if (isset($_POST['username'], $_POST['name'], $_POST['email'], $_POST['password'
     $statement->bindParam(':password', $password, PDO::PARAM_STR);
 
     $statement->execute();
-  }
 }
 
 redirect('/');
