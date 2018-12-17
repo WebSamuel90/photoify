@@ -23,8 +23,12 @@ if (isset($_POST['email'], $_POST['password'])) {
 
     unset($user['password']);
 
-    $_SESSION['user'] = $user;
+    $_SESSION['user'] = [
+            'id' => $users['id'],
+            'name' => $users['name'],
+            'username' => $users['username'],
+            'email' => $users['email']
+        ];
   }
 }
-
 redirect('/');

@@ -6,4 +6,4 @@ require __DIR__.'/../autoload.php';
 
 unset($_SESSION['user']);
 
-redirect('../../index.php');
+redirect('/');

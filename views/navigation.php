@@ -19,8 +19,12 @@
         </li><!-- /nav-item -->
 
         <li class="nav-item">
-            <a class="nav-link" href="create.php">Create account</a>
-        </li><!-- /nav-item -->
+              <?php if (isset($_SESSION['user'])): ?>
+                  <a class="nav-link" href="update.php">Update</a>
+              <?php else: ?>
+                  <a class="nav-link <?php echo $_SERVER['SCRIPT_NAME'] === '/create.php' ? 'active' : ''; ?>" href="create.php">Create</a>
+              <?php endif; ?>
+          </li><!-- /nav-item -->
 
 
   </ul><!-- /navbar-nav -->

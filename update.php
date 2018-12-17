@@ -4,7 +4,7 @@
     <h1>Create</h1>
 
 
-    <form action="app/users/create.php" method="post">
+    <form action="app/users/update.php" method="post">
 
         <div class="form-group">
           <label for="username">Username</label>
@@ -14,7 +14,7 @@
 
         <div class="form-group">
           <label for="fullname">Fullname</label>
-          <input class="form-control" type="text" name="fullname" value="" required>
+          <input class="form-control" type="text" name="name" value="" required>
           <small class="form-text text-muted">Please provide your Full name.</small>
         </div>
 
@@ -30,13 +30,13 @@
             <small class="form-text text-muted">Please provide a password.</small>
         </div><!-- /form-group -->
 
-        <div class="form-group">
+        <!-- <div class="form-group">
             <label for="password">Password</label>
             <input class="form-control" type="password" name="password" required>
             <small class="form-text text-muted">Please provide the password again.</small>
-        </div>
+        </div> -->
 
-        <button type="submit" class="btn btn-primary">Create</button>
+        <button type="submit" class="btn btn-primary">Update</button>
     </form>
 </article>
 
