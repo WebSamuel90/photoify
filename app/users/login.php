@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
 
-if (isset($_POST['email'], $_POST['password'])) {
-  $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
+if (isset($_POST['username'], $_POST['password'])) {
+  $username = filter_var(trim($_POST['username']), FILTER_SANITIZE_EMAIL);
 
-  $statement = $pdo->prepare("SELECT * FROM users WHERE email = :email");
+  $statement = $pdo->prepare("SELECT * FROM users WHERE username = :username");
 
-  $statement->bindParam(':email', $email, PDO::PARAM_STR);
+  $statement->bindParam(':username', $username, PDO::PARAM_STR);
 
   $statement->execute();
 
