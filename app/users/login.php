@@ -21,13 +21,11 @@ if (isset($_POST['username'], $_POST['password'])) {
 
   if (password_verify($_POST['password'], $user['password'])) {
 
-    unset($user['password']);
-
     $_SESSION['user'] = [
-            'id' => $users['id'],
-            'name' => $users['name'],
-            'username' => $users['username'],
-            'email' => $users['email']
+            'id' => $user['id'],
+            'name' => $user['name'],
+            'username' => $user['username'],
+            'email' => $user['email']
         ];
   }
 }

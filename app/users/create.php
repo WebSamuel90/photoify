@@ -11,7 +11,6 @@ if (isset($_POST['username'], $_POST['name'], $_POST['email'], $_POST['password'
     $email = filter_var(trim($_POST['email']), FILTER_SANITIZE_EMAIL);
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-
     $query = "INSERT INTO users (username, name, email, password) VALUES(:username, :name, :email, :password)";
 
     $statement = $pdo->prepare($query);
@@ -19,8 +18,6 @@ if (isset($_POST['username'], $_POST['name'], $_POST['email'], $_POST['password'
       if (!$statement) {
         die(var_dump($pdo->errorInfo()));
       }
-
-
 
     $statement->bindParam(':username', $username, PDO::PARAM_STR);
     $statement->bindParam(':name', $name, PDO::PARAM_STR);
