@@ -78,5 +78,18 @@ if (isset($_SESSION['user']['username'])){
     }
 }
 
+// Update session
+$statement = $pdo->prepare('SELECT * FROM users WHERE id = :id');
+$statement->bindParam(':id', $_SESSION['user']['id'], PDO::PARAM_STR);
+$statement->execute();
+
+$user = $statement->fetch(PDO::FETCH_ASSOC);
+
+$_SESSION['user'] = [
+  'id' => $user['id'],
+  'name' => $user['name'],
+  'username' => $user['username'],
+  'email' => $user['email']
+];
 
 redirect('/');
