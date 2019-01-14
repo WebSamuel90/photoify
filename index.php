@@ -1,8 +1,24 @@
-<?php require __DIR__.'/views/header.php'; ?>
+<?php require __DIR__.'/views/header.php';
 
-<article>
-    <h1><?php echo $config['title']; ?></h1>
-    <p>This is the home page.</p>
-</article>
+if(!$isLoggedIn): ?>
 
-<?php require __DIR__.'/views/footer.php'; ?>
+<div class="logo">
+    <img class="logo" src="assets/images/logo.png" alt="">
+</div>
+
+<div class="intro-nav">
+  <a class="sign-up" href="create.php">
+    <h2 class=" <?php echo $_SERVER['SCRIPT_NAME'] === '/create.php' ? 'active' : ''; ?>">Sign Up</h2>
+    <p>Get Started</p>
+  </a>
+  <a class="sign-in" href="login.php">
+    <h2 class=" <?php echo $_SERVER['SCRIPT_NAME'] === '/login.php' ? 'active' : ''; ?>">Sign In</h2>
+    <p>Existing Account</p>
+  </a>
+</div>
+
+<?php else:
+  redirect('home.php');
+endif;
+
+require __DIR__.'/views/footer.php'; ?>

@@ -3,7 +3,7 @@
 <?php if(!isset($_SESSION['user'])){ redirect("/"); } else { $user = $_SESSION['user'];}?>
 
 <article>
-    <h1>Create</h1>
+    <h1>Profile</h1>
 
     <form action="app/users/update.php" method="post" enctype="multipart/form-data">
 
