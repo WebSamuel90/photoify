@@ -12,7 +12,8 @@ require __DIR__.'/../app/autoload.php';
 
     <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="/assets/styles/normalize.css">
-    <link rel="stylesheet" href="/assets/styles/main.css">
+    <link rel="stylesheet" href="/assets/styles/intro.css">
+    <link rel="stylesheet" href="/assets/styles/feed.css">
 </head>
 <body>
   <!-- <?php require __DIR__.'/navigation.php'; ?>

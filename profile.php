@@ -8,6 +8,11 @@
     <form action="app/users/update.php" method="post" enctype="multipart/form-data">
 
         <div class="form-group">
+            <label for="profile-picture">Profile Picture</label>
+            <input class="form-control" type="file" name="profile_pic">
+        </div><!-- /form-group -->
+
+        <div class="form-group">
           <label for="username">Username</label>
           <input class="form-control" type="text" name="username" value="<?= $user['username'] ?>">
           <small class="form-text text-muted"></small>

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
 
-if (isset($_SESSION['user']['username'])){
+if ($isLoggedIn && isset($_SESSION['user']['username'])){
 
   $id = $_SESSION['user']['id'];
 
@@ -18,6 +18,33 @@ if (isset($_SESSION['user']['username'])){
 
   $user = $statement->fetch(PDO::FETCH_ASSOC);
 
+  // Profile Picture update
+  if(isset($_FILES['profile_pic'])){
+    $allowedTypes = ['image/png', 'image/jpg', 'image/jpeg'];
+
+    $postDir = __DIR__."/../data/avatars/";
+
+    $fileInfo = pathinfo($_FILES['profile_pic']['name']);
+    $fileExtension = $fileInfo['extension'];
+    $fileName = hash('sha1', microtime(true).$_FILES['profile_pic']['tmp_name']).'.'.$fileExtension;
+
+    if(in_array($_FILES['profile_pic']['type'], $allowedTypes)){
+      if(move_uploaded_file( $_FILES['profile_pic']['tmp_name'], $postDir.$fileName)) {
+
+        $dbPath = "/app/data/$postDir.$fileName";
+
+        $statement = $pdo->prepare('UPDATE users SET profile_pic_url = :profile_pic_url WHERE id = :id');
+
+        if(!$statement){
+          die(var_dump($pdo->errorInfo()));
+        }
+        
+        $statement->bindParam(':profile_pic_url', $dbPath, PDO::PARAM_STR);
+        $statement->bindParam(':id', $id, PDO::PARAM_STR);
+        $statement->execute();
+      }
+    }
+  }
 
   // Username update
   if(isset($_POST['username']) && $_POST['username'] !== $user['username']) {

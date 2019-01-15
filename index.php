@@ -18,7 +18,7 @@ if(!$isLoggedIn): ?>
 </div>
 
 <?php else:
-  redirect('home.php');
+  redirect('feed.php');
 endif;
 
 require __DIR__.'/views/footer.php'; ?>
