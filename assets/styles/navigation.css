@@ -8,6 +8,9 @@ nav {
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
+  background-image: url('../images/bg.JPG');
+  background-position: bottom;
+  z-index: 2;
 }
 nav i {
   color: white;

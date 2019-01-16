@@ -1,17 +1,28 @@
-<?php require __DIR__.'/views/header.php'; ?>
+<?php require __DIR__.'/views/header.php';
 
-<?php $posts = getPosts($_SESSION['user']['id'], $pdo);
+$statement = $pdo->prepare('SELECT * FROM posts ORDER BY id DESC');
 
-foreach($posts as $post): ?>
-  <div class="container">
-    <div class="post">
-      <img src="<?php $post['content'] ?>" alt="">
-      <div class="caption">
+if(!$statement){
+  die(var_dump($pdo->errorInfo()));
+}
 
+$statement->execute();
+
+$posts = $statement->fetchAll(PDO::FETCH_ASSOC); ?>
+
+<main>
+  <?php foreach($posts as $post): ?>
+      <div class="container">
+        <div class="post">
+          <img src="<?= $post['content'] ?>" alt="">
+        </div>
+        <div class="caption">
+          <i class="far fa-heart fa-2x"></i>
+          <h3><?= $post['caption']?></h3>
+        </div>
       </div>
-    </div>
-  </div>
-<?php endforeach;
+  <?php endforeach; ?>
+</main>
 
-require __DIR__.'/views/navigation.php';
-require __DIR__.'/views/footer.php'; ?>
+<?php require __DIR__.'/views/navigation.php'; ?>
+<?php require __DIR__.'/views/footer.php'; ?>
