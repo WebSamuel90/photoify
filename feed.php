@@ -18,7 +18,7 @@ $posts = $statement->fetchAll(PDO::FETCH_ASSOC); ?>
         </div>
         <div class="caption">
           <img src="<?= "app/data/avatars/".$post['profile_pic_url'] ?>" alt="">
-          <i class="far fa-heart fa-2x"></i>
+          <i class="fas fa-heart fa-2x"></i>
           <h3><?= $post['caption'] ?></h3>
         </div>
       </div>
