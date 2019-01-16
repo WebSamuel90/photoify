@@ -18,7 +18,7 @@ if($isLoggedIn && isset($_FILES['image'], $_POST['caption'])) {
    if(in_array($_FILES['image']['type'], $allowedTypes)) {
      if(move_uploaded_file($_FILES['image']['tmp_name'], $postDir.$fileName)) {
 
-       $dbPath = "/app/data/posts/$fileName";
+       // $dbPath = "/app/data/posts/$fileName";
 
        $statement = $pdo->prepare('INSERT INTO posts (user_id, image, caption) VALUES (:user_id, :image, :caption)');
 
@@ -27,7 +27,7 @@ if($isLoggedIn && isset($_FILES['image'], $_POST['caption'])) {
        }
 
        $statement->bindParam(':user_id', $_SESSION['user']['id'], PDO::PARAM_STR);
-       $statement->bindParam(':image', $dbPath, PDO::PARAM_STR);
+       $statement->bindParam(':image', $fileName, PDO::PARAM_STR);
        $statement->bindParam(':caption', $caption, PDO::PARAM_STR);
        $statement->execute();
      }

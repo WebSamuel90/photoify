@@ -1,11 +1,12 @@
-<?php require __DIR__.'/views/header.php'; ?>
+<?php
 
-<form action="app/posts/store.php" method="post" enctype="multipart/form-data">
+declare(strict_types=1);
 
-    <div class="form-group">
-        <label for="image">Select</label>
-        <input class="form-control" type="file" name="image">
-    </div><!-- /form-group -->
+require __DIR__.'/views/header.php';
+
+?>
+
+<form action="app/posts/edit.php" method="post" enctype="multipart/form-data">
 
     <div class="form-group">
       <label for="caption">Caption</label>
@@ -16,6 +17,5 @@
     <button type="submit" class="btn btn-primary">Post</button>
 
   </form>
-
 
 <?php require __DIR__.'/views/footer.php'; ?>

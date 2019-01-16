@@ -30,4 +30,4 @@ if (isset($_POST['username'], $_POST['password'])) {
         ];
   }
 }
-redirect('/');
+redirect('../../feed.php');

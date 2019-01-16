@@ -1,10 +1,11 @@
 header {
-  position: fixed;
+  position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 27%;
   background-color: white;
+  z-index: 2;
 }
 
 .profile-bio {
@@ -32,7 +33,6 @@ header i {
   padding-top: 5px;
   padding-right: 5px;
   color: black;
-  z-index: 2;
 }
 
 .edit {
@@ -51,4 +51,9 @@ header i {
   background-color: white;
   text-decoration: none;
   color: black;
+}
+
+.container {
+  position: relative;
+  top: 50%;
 }

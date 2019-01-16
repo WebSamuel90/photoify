@@ -1,6 +1,6 @@
 <?php require __DIR__.'/views/header.php';
 
-$statement = $pdo->prepare('SELECT * FROM posts INNER JOIN users ON posts.user_id=users.id');
+$statement = $pdo->prepare('SELECT * FROM posts INNER JOIN users ON posts.user_id = users.id');
 
 if(!$statement){
   die(var_dump($pdo->errorInfo()));
@@ -14,12 +14,12 @@ $posts = $statement->fetchAll(PDO::FETCH_ASSOC); ?>
   <?php foreach($posts as $post): ?>
       <div class="container">
         <div class="post">
-          <img src="<?= $post['image'] ?>" alt="">
+          <img src="<?= "app/data/posts/".$post['image'] ?>" alt="">
         </div>
         <div class="caption">
-          <img src="<?= $post['profile_pic_url'] ?>" alt="">
+          <img src="<?= "app/data/avatars/".$post['profile_pic_url'] ?>" alt="">
           <i class="far fa-heart fa-2x"></i>
-          <h3><?= $post['caption']?></h3>
+          <h3><?= $post['caption'] ?></h3>
         </div>
       </div>
   <?php endforeach; ?>

@@ -31,7 +31,7 @@ if ($isLoggedIn && isset($_SESSION['user']['username'])){
     if(in_array($_FILES['profile_pic']['type'], $allowedTypes)){
       if(move_uploaded_file( $_FILES['profile_pic']['tmp_name'], $postDir.$fileName)) {
 
-        $dbPath = "/app/data/avatars/$fileName";
+        // $dbPath = "/app/data/avatars/$fileName";
 
         $statement = $pdo->prepare('UPDATE users SET profile_pic_url = :profile_pic_url WHERE id = :id');
 
@@ -39,7 +39,7 @@ if ($isLoggedIn && isset($_SESSION['user']['username'])){
           die(var_dump($pdo->errorInfo()));
         }
 
-        $statement->bindParam(':profile_pic_url', $dbPath, PDO::PARAM_STR);
+        $statement->bindParam(':profile_pic_url', $fileName, PDO::PARAM_STR);
         $statement->bindParam(':id', $id, PDO::PARAM_STR);
         $statement->execute();
       }
@@ -120,4 +120,4 @@ $_SESSION['user'] = [
   'profile_pic_url' => $user['profile_pic_url']
 ];
 
-redirect('/');
+redirect('../../profile.php');
