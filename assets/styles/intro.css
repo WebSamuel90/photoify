@@ -4,8 +4,7 @@ body {
   font-family: sans-serif;
   /* height: 100%; */
   width: 100vw;
-  /* background-color: darkslateblue; */
-  background-image: url("../images/bg.JPG");
+  background-image: url('../images/bg.JPG');
 }
 
 p {
@@ -25,7 +24,7 @@ p {
 
 .intro-nav {
   position: fixed;
-  top: 85%;
+  bottom: 0%;
   height: 100px;
   width: 98vw;
   /* border: solid 3px white; */
