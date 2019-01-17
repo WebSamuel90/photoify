@@ -1,7 +1,5 @@
 'use strict';
 
-console.log('Hello World');
-
 const editButton = [...document.querySelectorAll('.fa-edit')]
 const deleteButton = [...document.querySelectorAll('.fa-trash-alt')]
 const likeButton = document.querySelectorAll('.fa-heart')

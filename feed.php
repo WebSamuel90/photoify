@@ -19,7 +19,7 @@ $posts = $statement->fetchAll(PDO::FETCH_ASSOC); ?>
               <img src="<?= "app/data/avatars/".$post['profile_pic_url'] ?>" alt="">
             </div>
             <div class="profile-name">
-              <p><?= $_SESSION['user']['username'] ?></p>
+              <p><?= $post['name'] ?></p>
             </div>
             <div class="content">
                 <img src="<?= "app/data/posts/".$post['image'] ?>" alt="">

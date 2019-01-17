@@ -6,16 +6,16 @@ require __DIR__.'/views/header.php';
 
 ?>
 
-<form action="app/posts/edit.php" method="post" enctype="multipart/form-data">
-
-    <div class="form-group">
-      <label for="caption">Caption</label>
-      <input class="form-control" type="text" name="caption" required>
-      <small class="form-text text-muted"></small>
+  <section>
+    <div class="container2">
+      <div class="login-form">
+        <h1>Upload</h1>
+        <form action="app/posts/edit.php" method="post" enctype="multipart/form-data">
+          <textarea class=""  name="caption" required>
+          <input type="submit" name="" value="Upload">
+        </form>
+      </div>
     </div>
-
-    <button type="submit" class="btn btn-primary">Post</button>
-
-  </form>
+  </section>
 
 <?php require __DIR__.'/views/footer.php'; ?>
