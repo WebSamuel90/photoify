@@ -20,7 +20,7 @@ $posts = $statement->fetchAll(PDO::FETCH_ASSOC); ?>
     <?php else : ?>
     <img src="assets/images/default_profile.jpg" alt="">
     <?php endif; ?>
-    <h2><?php echo $_SESSION['user']['name'] ?></h2>
+    <h2><?= $_SESSION['user']['name'] ?></h2>
   </div>
   <div class="edit">
     <a href="editprofile.php">Edit Profile</a>

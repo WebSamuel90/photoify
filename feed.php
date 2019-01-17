@@ -1,6 +1,6 @@
 <?php require __DIR__.'/views/header.php';
 
-$statement = $pdo->prepare('SELECT * FROM posts INNER JOIN users ON posts.user_id = users.id');
+$statement = $pdo->prepare('SELECT * FROM posts INNER JOIN users ON posts.user_id = users.id ORDER BY id DESC');
 
 if(!$statement){
   die(var_dump($pdo->errorInfo()));
