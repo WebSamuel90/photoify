@@ -26,7 +26,7 @@ $posts = $statement->fetchAll(PDO::FETCH_ASSOC); ?>
             </div>
             <div class="card-footer">
               <div class="likes">
-                <i class="far fa-heart fa-2x"></i>
+                <i class="far fa-heart fa-2x" data-id="<?= $post['post_id']?>"></i>
               </div>
               <div class="description">
                 <p><?= $post['caption'] ?></p>

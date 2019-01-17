@@ -4,7 +4,7 @@ console.log('Hello World');
 
 const editButton = [...document.querySelectorAll('.fa-edit')]
 const deleteButton = [...document.querySelectorAll('.fa-trash-alt')]
-const likeButton = [...document.querySelectorAll('.fa-heart')]
+const likeButton = document.querySelectorAll('.fa-heart')
 
 function confirmDelete() {
   let del = confirm("Are you sure?")

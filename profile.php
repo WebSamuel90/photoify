@@ -46,6 +46,8 @@ $posts = $statement->fetchAll(PDO::FETCH_ASSOC); ?>
               <i class="far fa-heart fa-2x"></i>
             </div>
             <div class="description">
+              <a href="editImages.php"><i class="fas fa-edit fa-2x" data-id="<?= $post['post_id']?>"></i></a>
+            <i class="fas fa-trash-alt fa-2x" data-id="<?= $post['post_id']?>"></i>
               <p><?= $post['caption'] ?></p>
             </div>
           </div>
