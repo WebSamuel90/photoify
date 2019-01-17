@@ -26,20 +26,31 @@ $posts = $statement->fetchAll(PDO::FETCH_ASSOC); ?>
     <a href="editprofile.php">Edit Profile</a>
   </div>
 </header>
+
 <main>
   <?php foreach($posts as $post): ?>
-      <div class="container">
-        <div class="post">
-          <img src="<?= "app/data/posts/".$post['image'] ?>" alt="">
+    <div class="container3">
+      <div class="card">
+        <div class="card-header">
+          <div class="profile-img">
+            <img src="<?= "app/data/avatars/".$post['profile_pic_url'] ?>" alt="">
+          </div>
+          <div class="profile-name">
+            <p><?= $_SESSION['user']['username'] ?></p>
+          </div>
+          <div class="content">
+              <img src="<?= "app/data/posts/".$post['image'] ?>" alt="">
+          </div>
+          <div class="card-footer">
+            <div class="likes">
+              <i class="far fa-heart fa-2x"></i>
+            </div>
+            <div class="description">
+              <p><?= $post['caption'] ?></p>
+            </div>
+          </div>
         </div>
-        <div class="caption">
-          <img src="<?= "app/data/avatars/".$post['profile_pic_url'] ?>" alt="">
-          <i class="far fa-heart fa-2x"></i>
-          <h3><?= $post['caption']?></h3>
-          <a href="editImages.php"><i class="fas fa-edit fa-2x" data-id="<?= $post['post_id']?>"></i></a>
-            <i class="fas fa-trash-alt fa-2x" data-id="<?= $post['post_id']?>"></i>
-        </div>
-      </div>
+    </div>
   <?php endforeach; ?>
 </main>
 

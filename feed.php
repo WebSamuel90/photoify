@@ -13,14 +13,26 @@ $posts = $statement->fetchAll(PDO::FETCH_ASSOC); ?>
 <main>
   <?php foreach($posts as $post): ?>
       <div class="container">
-        <div class="post">
-          <img src="<?= "app/data/posts/".$post['image'] ?>" alt="">
-        </div>
-        <div class="caption">
-          <img src="<?= "app/data/avatars/".$post['profile_pic_url'] ?>" alt="">
-          <i class="fas fa-heart fa-2x"></i>
-          <h3><?= $post['caption'] ?></h3>
-        </div>
+        <div class="card">
+          <div class="card-header">
+            <div class="profile-img">
+              <img src="<?= "app/data/avatars/".$post['profile_pic_url'] ?>" alt="">
+            </div>
+            <div class="profile-name">
+              <p><?= $_SESSION['user']['username'] ?></p>
+            </div>
+            <div class="content">
+                <img src="<?= "app/data/posts/".$post['image'] ?>" alt="">
+            </div>
+            <div class="card-footer">
+              <div class="likes">
+                <i class="far fa-heart fa-2x"></i>
+              </div>
+              <div class="description">
+                <p><?= $post['caption'] ?></p>
+              </div>
+            </div>
+          </div>
       </div>
   <?php endforeach; ?>
 </main>

@@ -35,12 +35,8 @@ deleteButton.forEach(button => {
 likeButton.forEach(button => {
   button.addEventListener('click', (event) => {
     document.cookie = "postId=" + event.target.dataset.id
-  })
-})
-
-likeButton.forEach(button => {
-  button.addEventListener('click', (event) => {
-    button.classList.remove('far')
-    button.classList.add('fas')
+    window.location.href="../../app/posts/like.php"
+    button.classList.toggle('far')
+    button.classList.toggle('fas')
   })
 })

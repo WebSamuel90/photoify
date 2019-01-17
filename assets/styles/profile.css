@@ -6,6 +6,7 @@ header {
   height: 27%;
   background-color: white;
   z-index: 2;
+  margin-bottom: 15px;
 }
 
 .profile-bio {
@@ -35,6 +36,62 @@ header i {
   color: black;
 }
 
+.container3 {
+  background: #FAFAFA;
+  position: relative;
+  width: 100%;
+  max-height: 450px;
+  margin-top: 30%;
+  margin-bottom: 12%;
+}
+
+.card {
+  background: #fff;
+  margin: 0 auto;
+  width: 100%;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.card-header {
+  padding: 15px;
+}
+
+.profile-img img {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  position: relative;
+  top: 3px;
+  margin-right: 5px;
+}
+
+.profile-name {
+  display: inline-block;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  color: #111111;
+  font-weight: 700;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+}
+.content img {
+  max-width: 100%;
+  max-height: 450px;
+
+}
+
+.card-footer {
+  padding: 15px;
+  box-sizing: border-box;
+  overflow: auto;
+}
+
 .edit {
   height: 30%;
   display: flex;
@@ -53,7 +110,8 @@ header i {
   color: black;
 }
 
-.container {
+/* .container {
   position: relative;
   top: 50%;
-}
+  bottom: 50px;
+} */
