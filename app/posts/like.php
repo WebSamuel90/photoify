@@ -22,7 +22,7 @@ $statement->execute();
 $getLikes = $statement->fetch(PDO::FETCH_ASSOC);
 
 if(!empty($getLikes)) {
-  $removeLikes = $pdo->prepare('DELETE FROM likes WHERE post_id = :post_id AND id = :user_id');
+  $removeLikes = $pdo->prepare('DELETE FROM likes WHERE photo_id = :post_id AND user_id = :user_id');
 
   if(!$removeLikes){
     die(var_dump($pdo->errorInfo()));
@@ -34,13 +34,14 @@ if(!empty($getLikes)) {
   $removeLikes->execute();
 } else {
 
-  $addLikes = $pdo->prepare('INSERT INTO likes (likes, user_id) VALUES ( :post_id, :user_id)');
+  $addLikes = $pdo->prepare('INSERT INTO likes (photo_id, likes, user_id) VALUES ( :photo_id, :post_id, :user_id)');
 
   if(!$addLikes){
     die(var_dump($pdo->errorInfo()));
   }
 
   $addLikes->bindParam(':post_id', $addLikes, PDO::PARAM_INT);
+  $addLikes->bindParam(':photo_id', $addLikes, PDO::PARAM_INT);
   $addLikes->bindParam(':user_id', $userId, PDO::PARAM_INT);
 
   $addLikes->execute();
