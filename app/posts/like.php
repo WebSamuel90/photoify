@@ -8,43 +8,63 @@ require __DIR__.'/../autoload.php';
 $postsId = $_COOKIE['postId'];
 $userId = $_SESSION['user']['id'];
 
-$statement = $pdo->prepare('SELECT * FROM likes WHERE photo_id = :post_id AND user_id = :user_id');
-
-if(!$statement){
-  die(var_dump($pdo->errorInfo()));
+if ($loggedInUser){
+	// check if user already has liked post
+	$alreadyLiked = checkIfLiked($userId, $postId);
+	// If so, remove like
+if ($alreadyLiked) {
+	removeLikes($postId, $userId);
+	redirect("../../index.php");
+}
+	// Otherwise, add like
+else {
+	addLikes($postId, $userId);
+	redirect("../../index.php");
+}
+}
+// If not logged in, redirect back to index.
+else {
+    redirect("../../index.php");
 }
 
-$statement->bindParam(':post_id', $postsId, PDO::PARAM_INT);
-$statement->bindParam(':user_id', $userId, PDO::PARAM_INT);
-
-$statement->execute();
-
-$getLikes = $statement->fetch(PDO::FETCH_ASSOC);
-
-if(!empty($getLikes)) {
-  $removeLikes = $pdo->prepare('DELETE FROM likes WHERE photo_id = :post_id AND user_id = :user_id');
-
-  if(!$removeLikes){
-    die(var_dump($pdo->errorInfo()));
-  }
-
-  $removeLikes->bindParam(':post_id', $addLikes, PDO::PARAM_INT);
-  $removeLikes->bindParam(':user_id', $userId, PDO::PARAM_INT);
-
-  $removeLikes->execute();
-} else {
-
-  $addLikes = $pdo->prepare('INSERT INTO likes (photo_id, likes, user_id) VALUES ( :photo_id, :post_id, :user_id)');
-
-  if(!$addLikes){
-    die(var_dump($pdo->errorInfo()));
-  }
-
-  $addLikes->bindParam(':post_id', $addLikes, PDO::PARAM_INT);
-  $addLikes->bindParam(':photo_id', $addLikes, PDO::PARAM_INT);
-  $addLikes->bindParam(':user_id', $userId, PDO::PARAM_INT);
-
-  $addLikes->execute();
-}
+// $statement = $pdo->prepare('SELECT * FROM likes WHERE photo_id = :post_id AND user_id = :user_id');
+//
+// if(!$statement){
+//   die(var_dump($pdo->errorInfo()));
+// }
+//
+// $statement->bindParam(':post_id', $postsId, PDO::PARAM_INT);
+// $statement->bindParam(':user_id', $userId, PDO::PARAM_INT);
+//
+// $statement->execute();
+//
+// $getLikes = $statement->fetch(PDO::FETCH_ASSOC);
+//
+// if(!empty($getLikes)) {
+//   $removeLike = $pdo->prepare('DELETE FROM likes WHERE photo_id = :post_id AND user_id = :user_id');
+//
+//   if(!$removeLike){
+//     die(var_dump($pdo->errorInfo()));
+//   }
+//
+//   $removeLike->bindParam(':post_id', $addLikes, PDO::PARAM_INT);
+//   $removeLike->bindParam(':user_id', $userId, PDO::PARAM_INT);
+//
+//   $removeLike->execute();
+//
+// } else {
+//
+//   $addLike = $pdo->prepare('INSERT INTO likes (photo_id, likes, user_id) VALUES ( :photo_id, :post_id, :user_id)');
+//
+//   if(!$addLike){
+//     die(var_dump($pdo->errorInfo()));
+//   }
+//
+//   $addLike->bindParam(':post_id', $addLike, PDO::PARAM_INT);
+//   $addLike->bindParam(':photo_id', $addLike, PDO::PARAM_INT);
+//   $addLike->bindParam(':user_id', $userId, PDO::PARAM_INT);
+//
+//   $addLike->execute();
+// }
 
 redirect('../../feed.php');

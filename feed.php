@@ -11,7 +11,12 @@ $statement->execute();
 $posts = $statement->fetchAll(PDO::FETCH_ASSOC); ?>
 
 <main>
-  <?php foreach($posts as $post): ?>
+  <?php foreach($posts as $post):
+          if($loggedInUser) {
+            $doesUserLikePost= userLikesPost($loggedInUser['id'], $post['post_id']);
+            }
+            $likes = countLikes($post['post_id']);?>
+
       <div class="container">
         <div class="card">
           <div class="card-header">
@@ -27,6 +32,7 @@ $posts = $statement->fetchAll(PDO::FETCH_ASSOC); ?>
             <div class="card-footer">
               <div class="likes">
                 <i class="far fa-heart fa-2x" data-id="<?= $post['post_id']?>"></i>
+                <h5 class="likes"><?= !empty($likes) ?  $likes :  '0' ?></h5>
               </div>
               <div class="description">
                 <p><?= $post['caption'] ?></p>

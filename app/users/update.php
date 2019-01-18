@@ -4,19 +4,22 @@ declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
 
-if ($isLoggedIn && isset($_SESSION['user']['username'])){
+// if ($isLoggedIn && isset($_SESSION['user']['username'])){
+//
+//   $id = $_SESSION['user']['id'];
+//
+//   $statement = $pdo->prepare('SELECT * FROM users WHERE username = :username');
+//
+//   if(!$statement){
+//     die(var_dump($pdo->errorInfo()));
+//   }
+//   $statement->bindParam(':username', $_SESSION['user']['username'], PDO::PARAM_STR);
+//   $statement->execute();
+//
+//   $user = $statement->fetch(PDO::FETCH_ASSOC);
 
-  $id = $_SESSION['user']['id'];
 
-  $statement = $pdo->prepare('SELECT * FROM users WHERE username = :username');
-
-  if(!$statement){
-    die(var_dump($pdo->errorInfo()));
-  }
-  $statement->bindParam(':username', $_SESSION['user']['username'], PDO::PARAM_STR);
-  $statement->execute();
-
-  $user = $statement->fetch(PDO::FETCH_ASSOC);
+  getUser($loggedInUser);
 
   // Profile Picture update
   if(isset($_FILES['profile_pic'])){

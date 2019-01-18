@@ -11,9 +11,6 @@ date_default_timezone_set('UTC');
 // Set the default character encoding to UTF-8.
 mb_internal_encoding('UTF-8');
 
-// Variable for logged in check
-$isLoggedIn = isset($_SESSION['user']) == true;
-
 // Include the helper functions.
 require __DIR__.'/functions.php';
 
@@ -22,3 +19,8 @@ $config = require __DIR__.'/config.php';
 
 // Setup the database connection.
 $pdo = new PDO($config['database_path']);
+
+$loggedInUser = null;
+if (isset($_SESSION['user'])) {
+    $loggedInUser = getUser($_SESSION['user']['id']);
+};
