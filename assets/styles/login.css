@@ -5,7 +5,14 @@ body {
   letter-spacing: 1px;
 }
 
-section {
+article h1 {
+  color: white;
+}
+
+article label {
+  color: white;
+}
+/* section {
   width: 100vw;
   height: 100vh;
   background: url('../images/bg.JPG');
@@ -58,4 +65,4 @@ section {
   font-size: 16px;
   border: none;
   cursor: pointer;
-}
+} */

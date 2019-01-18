@@ -2,21 +2,37 @@
 
 <?php if(!isset($_SESSION['user'])){ redirect("/"); } else { $user = $_SESSION['user'];}?>
 
-<section>
-  <div class="container2">
-    <div class="login-form">
-      <h1>Update</h1>
-      <form action="app/users/update.php" method="post" enctype="multipart/form-data">
-        <input class="" type="file" name="profile_pic">
-        <input class="" type="text" name="username" value="<?= $user['username'] ?>">
-        <input class="" type="text" name="name" value="<?= $user['name'] ?>">
-        <input class="" type="email" name="email" value="<?= $user['email'] ?>">
-        <input class="" type="password" name="password" placeholder="Old Password">
-        <input ctype="password" name="new-password" placeholder="New Password">
-        <input type="submit" name="" value="Update">
-      </form>
-    </div>
-  </div>
-</section>
+<article>
+  <h1>Update</h1>
+
+  <form action="app/users/update.php" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="profile_pic">Profile Picture</label>
+        <input class="form-control" type="file" name="profile_pic" id="profile_pic">
+    </div><!-- /form-group -->
+
+      <div class="form-group">
+          <label for="username">Username</label>
+          <input class="form-control" type="text" name="username" id="username" value="<?= $user['username'] ?>">
+      </div><!-- /form-group -->
+
+      <div class="form-group">
+          <label for="name">Name</label>
+          <input class="form-control" type="text" name="name" id="name" value="<?= $user['name'] ?>">
+      </div><!-- /form-group -->
+
+      <div class="form-group">
+          <label for="eamil">Email</label>
+          <input class="form-control" type="emal" name="email" id="email" value="<?= $user['email'] ?>">
+      </div><!-- /form-group -->
+
+      <div class="form-group">
+          <label for="password">Password</label>
+          <input class="form-control" type="password" name="password" id="password" placeholder="New Password">
+      </div><!-- /form-group -->
+
+      <button type="submit" class="btn btn-primary">Update</button>
+  </form>
+</article>
 
 <?php require __DIR__.'/views/footer.php'; ?>

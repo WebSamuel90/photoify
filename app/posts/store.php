@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
 
-if($isLoggedIn && isset($_FILES['image'], $_POST['caption'])) {
+if($loggedInUser && isset($_FILES['image'], $_POST['caption'])) {
    $allowedTypes = ['image/png', 'image/jpg', 'image/jpeg'];
 
    $caption = filter_var(trim($_POST['caption']),FILTER_SANITIZE_STRING);
@@ -26,7 +26,7 @@ if($isLoggedIn && isset($_FILES['image'], $_POST['caption'])) {
          die(var_dump($pdo->errorInfo()));
        }
 
-       $statement->bindParam(':user_id', $_SESSION['user']['id'], PDO::PARAM_STR);
+       $statement->bindParam(':user_id', $loggedInUser['id'], PDO::PARAM_STR);
        $statement->bindParam(':image', $fileName, PDO::PARAM_STR);
        $statement->bindParam(':caption', $caption, PDO::PARAM_STR);
        $statement->execute();

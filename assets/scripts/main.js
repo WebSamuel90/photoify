@@ -28,13 +28,3 @@ deleteButton.forEach(button => {
     confirmDelete()
   })
 })
-
-//Select post_id to like
-likeButton.forEach(button => {
-  button.addEventListener('click', (event) => {
-    document.cookie = "postId=" + event.target.dataset.id
-    window.location.href="../../app/posts/like.php"
-    button.classList.toggle('far')
-    button.classList.toggle('fas')
-  })
-})

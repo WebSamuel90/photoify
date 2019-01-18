@@ -19,7 +19,9 @@ require __DIR__.'/../autoload.php';
 //   $user = $statement->fetch(PDO::FETCH_ASSOC);
 
 
-  getUser($loggedInUser);
+  $user = getUser($loggedInUser['id']);
+
+  $id = $loggedInUser['id'];
 
   // Profile Picture update
   if(isset($_FILES['profile_pic'])){
@@ -54,6 +56,7 @@ require __DIR__.'/../autoload.php';
     $username = filter_var(trim($_POST['username']), FILTER_SANITIZE_STRING);
 
     $statement = $pdo->prepare("UPDATE users SET username = :username WHERE id = :id");
+
     $statement->bindParam(':username', $username, PDO::PARAM_STR);
     $statement->bindParam(':id', $id, PDO::PARAM_STR);
     $statement->execute();
@@ -106,9 +109,10 @@ require __DIR__.'/../autoload.php';
           redirect("/update.php");
         }
     }
-}
 
 // Update session
+// getUser($loggedInUser['id']);
+
 $statement = $pdo->prepare('SELECT * FROM users WHERE id = :id');
 $statement->bindParam(':id', $_SESSION['user']['id'], PDO::PARAM_STR);
 $statement->execute();
