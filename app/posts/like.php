@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 require __DIR__.'/../autoload.php';
 
-
-$postsId = $_COOKIE['postId'];
-$userId = $_SESSION['user']['id'];
+$postId = $_POST['post-id'];
+$userId = $loggedInUser['id'];
 
 if ($loggedInUser){
 	// check if user already has liked post

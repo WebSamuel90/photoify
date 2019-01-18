@@ -1,6 +1,6 @@
 <?php require __DIR__.'/views/header.php';
 
-if(!$isLoggedIn): ?>
+if(!$loggedInUser): ?>
 
 <div class="logo">
     <img class="logo" src="assets/images/logo.png" alt="">

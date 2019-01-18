@@ -55,11 +55,11 @@ function getUser(string $userId): array {
 // Check if user has liked posts
 function checkIfLiked(string $userId, string $postId): bool{
 	$pdo = connectToDB();
-	$getLikes = $pdo->prepare('SELECT count(*) FROM likes WHERE post_id = :post_id and user_id = :user_id');
+	$getLikes = $pdo->prepare('SELECT count(*) FROM likes WHERE photo_id = :photo_id and user_id = :user_id');
     if (!$getLikes) {
         die(var_dump($pdo->errorInfo()));
     }
-	$getLikes->bindParam(':post_id', $postId, PDO::PARAM_INT);
+	$getLikes->bindParam(':photo_id', $postId, PDO::PARAM_INT);
 	$getLikes->bindParam('user_id', $userId, PDO::PARAM_INT);
     $getLikes->execute();
 	$likes = $getLikes->fetch(PDO::FETCH_NUM);
@@ -73,11 +73,11 @@ function checkIfLiked(string $userId, string $postId): bool{
 
 function countLikes(string $postId): int{
     $pdo = connectToDB();
-    $getLikes = $pdo->prepare('SELECT * FROM likes WHERE post_id=:post_id');
+    $getLikes = $pdo->prepare('SELECT * FROM likes WHERE photo_id=:photo_id');
     if (!$getLikes) {
         die(var_dump($pdo->errorInfo()));
     }
-    $getLikes->bindParam(':post_id', $postId, PDO::PARAM_INT);
+    $getLikes->bindParam(':photo_id', $postId, PDO::PARAM_INT);
     $getLikes->execute();
     $likes = $getLikes->fetchAll(PDO::FETCH_ASSOC);
     $currentLikes = count($likes);
@@ -87,11 +87,11 @@ function countLikes(string $postId): int{
 // Add likes to post
 function addLikes(string $postId, string $userId): void{
     $pdo = connectToDB();
-    $addLikes = $pdo->prepare('INSERT INTO likes (likes, post_id, user_id) VALUES (1, :post_id, :user_id)');
+    $addLikes = $pdo->prepare('INSERT INTO likes (likes, photo_id, user_id) VALUES (1, :photo_id, :user_id)');
     if (!$addLikes) {
         die(var_dump($pdo->errorInfo()));
     }
-    $addLikes->bindParam(':post_id', $postId, PDO::PARAM_INT);
+    $addLikes->bindParam(':photo_id', $postId, PDO::PARAM_INT);
     $addLikes->bindParam(':user_id', $userId, PDO::PARAM_INT);
     $addLikes->execute();
 }
@@ -99,11 +99,11 @@ function addLikes(string $postId, string $userId): void{
 // Remove likes from post
 function removeLikes(string $postId, string $userId): void{
     $pdo = connectToDB();
-    $removeLikes = $pdo->prepare('DELETE FROM likes WHERE user_id=:user_id AND post_id=:post_id');
+    $removeLikes = $pdo->prepare('DELETE FROM likes WHERE user_id=:user_id AND photo_id=:photo_id');
     if (!$removeLikes) {
         die(var_dump($pdo->errorInfo()));
     }
-    $removeLikes->bindParam(':post_id', $postId, PDO::PARAM_INT);
+    $removeLikes->bindParam(':photo_id', $postId, PDO::PARAM_INT);
     $removeLikes->bindParam(':user_id', $userId, PDO::PARAM_INT);
     $removeLikes->execute();
 }
@@ -111,11 +111,11 @@ function removeLikes(string $postId, string $userId): void{
 // Check if user likes post
 function userLikesPost(string $userId, string $postId){
     $pdo = connectToDB();
-    $getLikes = $pdo->prepare('SELECT * FROM likes WHERE user_id=:user_id AND post_id=:post_id ');
+    $getLikes = $pdo->prepare('SELECT * FROM likes WHERE user_id=:user_id AND photo_id=:photo_id ');
     if (!$getLikes) {
         die(var_dump($pdo->errorInfo()));
     }
-    $getLikes->bindParam(':post_id', $postId, PDO::PARAM_INT);
+    $getLikes->bindParam(':photo_id', $postId, PDO::PARAM_INT);
     $getLikes->bindParam(':user_id', $userId, PDO::PARAM_INT);
     $getLikes->execute();
     $doesUserLikeThisPost = $getLikes->fetch(PDO::FETCH_ASSOC);

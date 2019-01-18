@@ -31,8 +31,17 @@ $posts = $statement->fetchAll(PDO::FETCH_ASSOC); ?>
             </div>
             <div class="card-footer">
               <div class="likes">
-                <i class="far fa-heart fa-2x" data-id="<?= $post['post_id']?>"></i>
-                <h5 class="likes"><?= !empty($likes) ?  $likes :  '0' ?></h5>
+                <form class="likes-form" action="/app/posts/like.php" method="post">
+                  <input type="hidden" name="post-id" value="<?= $post['post_id']; ?>">
+                  <button class="like-button">
+                    <?php if(!empty($doesUserLikePost)): ?>
+                        <i class="fas fa-heart fa-2x"></i>
+                      <?php else : ?>
+                          <i class="far fa-heart fa-2x"></i>
+                        <?php endif; ?>
+                  </button>
+                      <h5 class="likes"><?= !empty($likes) ?  $likes :  '0' ?></h5>
+                    </form>
               </div>
               <div class="description">
                 <p><?= $post['caption'] ?></p>
