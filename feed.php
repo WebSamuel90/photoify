@@ -11,14 +11,14 @@ $statement->execute();
 $posts = $statement->fetchAll(PDO::FETCH_ASSOC); ?>
 
 <main>
+      <div class="container">
   <?php foreach($posts as $post):
           if($loggedInUser) {
             $doesUserLikePost= userLikesPost($loggedInUser['id'], $post['post_id']);
             }
             $likes = countLikes($post['post_id']);?>
 
-      <div class="container">
-        <div class="card">
+        <div class="card mt-4">
           <div class="card-header">
             <div class="profile-img">
               <img src="<?= "app/data/avatars/".$post['profile_pic_url'] ?>" alt="">
@@ -50,6 +50,7 @@ $posts = $statement->fetchAll(PDO::FETCH_ASSOC); ?>
           </div>
       </div>
   <?php endforeach; ?>
+</div>
 </main>
 
 <?php require __DIR__.'/views/navigation.php'; ?>
